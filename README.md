@@ -82,14 +82,14 @@ import EmojiExtractor from 'path/to/EmojiExtractor.mjs'
  * @return {Promise}          - return data object and save/download method
  */
 EmojiExtractor({
-   url: 'path/to/12.0/emoji-test.txt', // v12 - to use v11 change "12.0" to "11.0"
+   url: 'path/to/12.0/emoji-test.txt', // v12 example
    minify: Boolean,
    onlyicon: Boolean,
    tones: Boolean,
    filename: String,
    ignore: Array
-}).then(data => {
-    console.log(data) // expect: {data: {…}, save: ƒ}
+}).then(Extractor => {
+    console.log(Extractor) // expect: {data: {…}, save: ƒ}
 }).catch(console.log)
 ```
 
@@ -98,7 +98,7 @@ EmojiExtractor({
 Include in your document:
 
 ```html
-<script src="path/to/EmojiExtractor.js"></script>
+<script src="path/to/EmojiExtractor.min.js"></script>
 ```
 
 ----------
@@ -109,9 +109,9 @@ Use:
 
 let EmojiExtractor = window.EmojiExtractor
 
-EmojiExtractor({/*settings*/}).then(data => {
+EmojiExtractor({/*settings*/}).then(Extractor => {
     // save to file ... use:
-    data.save()
+    Extractor.save()
 }).catch(console.log)
 ```
 
@@ -135,13 +135,14 @@ Data result (JSON):
 
 ### Demo:
 
-Please, see the basic demonstration on https://jsfiddle.net/subversivo58/jcng6wpy/56/
+Please, see the basic demonstration on [https://jsfiddle.net/subversivo58/](https://jsfiddle.net/subversivo58/jcng6wpy/56/)
 
 
 ----------
 
 ### Todo:
 
+- [ ] implement ES6 module library version
 - [ ] get specif icons by group
 - [ ] get specific loot of icons (by "name/description")
 
