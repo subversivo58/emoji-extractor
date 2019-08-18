@@ -119,15 +119,23 @@ EmojiExtractor({/*settings*/}).then(data => {
 
 ### Features:
 
-Library lightway:
+Library lightway (no ES6 module):
 
-* **minified** - weight ?kB
-* **unminified** - weight ?kB
+* **minified** - only basic info comment: weight +- 5.36kB
+* **unminified** - whit all code comments: weight +- 22.7kB
 
-Data result:
+Data result (JSON):
 
-* **minified** - only icons, no skins, no lines, no white spaces and with ignorated list: weight +- 14kB
-* **unmified** - icons, descriptions, skins, lines and white spaces (with ignorated list): weight +- 165kB
+* **minified** - only icons, no skins, no lines, no white spaces and with ignorated list: weight +- 13.6kB
+* **unmified** - icons, descriptions, skins, lines and white spaces (with ignorated list): weight +- 155kB
+
+> The above measurements are "gross" and do not represent network traffic measurements using **GZIP**
+
+----------
+
+### Demo:
+
+Please, see the basic demonstration on https://jsfiddle.net/subversivo58/jcng6wpy/56/
 
 
 ----------
