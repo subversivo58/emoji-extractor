@@ -128,7 +128,7 @@
             // check if file name have extension
             if ( !/\./.test(cfg.filename) ) {
                 // save to json
-                cfg.filename = (/12/.test(cfg.url)) ? 'emoji-v12.json' : 'emoji-v11.json'
+                cfg.filename = (/12/.test(cfg.url)) ? 'emoji-v12.json' : 'emoji.json'
             }
 
             let parts = cfg.filename.split('.'),
