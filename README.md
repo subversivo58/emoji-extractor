@@ -73,23 +73,23 @@ Not all icons have been implemented even in the latest versions of major browser
 import EmojiExtractor from 'path/to/EmojiExtractor.mjs'
 
 /**
- * @param {String}   url      - url for v11 or v12 file target                  [default: v12 url]
- * @param {Boolean}  minify   - simple remove comments in code and withe spaces [default: false]
+ * @param {String}   url      - url for v11 or v12 data file target             [default: v12 url whith pŕoxy]
+ * @param {Boolean}  minify   - simple remove lines and white spaces            [default: false]
  * @param {Boolean}  onlyicon - return only icons                               [default: false]
  * @param {Boolean}  tones    - return icons skins                              [default: true]
- * @param {String}   filemane - optional for save/download data                 [default: use version eg: v12.js]
+ * @param {String}   filemane - optional for save/download data                 [default: use .json]
  * @param {Array}    ignore   - list of ignore icons, skins                     [default: "generic list"]
- * @return {Promise}          - return data object or save/download data to file case have filename param
+ * @return {Promise}          - return data object and save/download method
  */
 EmojiExtractor({
-   url: 'https://unicode.org/Public/emoji/12.0/emoji-test.txt', // v12 - to use v11 change "12.0" to "11.0"
+   url: 'path/to/12.0/emoji-test.txt', // v12 - to use v11 change "12.0" to "11.0"
    minify: Boolean,
    onlyicon: Boolean,
    tones: Boolean,
    filename: String,
    ignore: Array
 }).then(data => {
-    // do stuff the data ...
+    console.log(data) // expect: {data: {…}, save: ƒ}
 }).catch(console.log)
 ```
 
@@ -98,7 +98,7 @@ EmojiExtractor({
 Include in your document:
 
 ```html
-<script src="path/to/EmojiExtractor.min.js"></script>
+<script src="path/to/EmojiExtractor.js"></script>
 ```
 
 ----------
@@ -110,12 +110,10 @@ Use:
 let EmojiExtractor = window.EmojiExtractor
 
 EmojiExtractor({/*settings*/}).then(data => {
-    // do stuff the data ...
+    // save to file ... use:
+    data.save()
 }).catch(console.log)
 ```
-
-> NOTE: see limitations section in this page case use minify mode
-
 
 ----------
 
@@ -128,8 +126,8 @@ Library lightway:
 
 Data result:
 
-* **minified** - only icons, no skins, no comments and with ignorated list: weight +- 14kB
-* **unmified** - icons, descriptions, comments (with ignorated list): weight +- 165kB
+* **minified** - only icons, no skins, no lines, no white spaces and with ignorated list: weight +- 14kB
+* **unmified** - icons, descriptions, skins, lines and white spaces (with ignorated list): weight +- 165kB
 
 
 ----------
@@ -145,20 +143,6 @@ Data result:
 ### Contributing:
 
 Your contribution to this code will be welcomed, please see the [contribution guide](https://github.com/subversivo58/emoji-extractor/blob/master/CONTRIBUTING.md)
-
-
-----------
-
-### Limitation:
-
-This code use **positive lookbehind** in `RegExp` rule for minify data, this only adopted in NodeJS and this browsers:
-
-* **desktop**: Chrome 62+, Edge 76+, Opera 49+
-* **mobile (Android)**: Native Browser 67+, Chrome 75+, UC Browser 12.12+, Opera Mobile 46+, Samsung Internet 9.2+
-* **nodejs**: v6+ (v6.x.x whith **harmony** flag)
-
-
-See [caniuse.com for support table](https://caniuse.com/#feat=js-regexp-lookbehind)
 
 
 ----------
