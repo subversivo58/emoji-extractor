@@ -1,2 +1,176 @@
-# emoji-extractor
-Javascript Emoji Extractor
+# Javascript Emoji Extractor
+
+This code extract emojis icons and associate data (groups, subgroups, descriptions) from [unicode.org](https://unicode.org/Public/emoji/12.0/emoji-test.txt) public file.
+
+Emoji icons and associated data is copyrighted of **Unicode, Inc** ... see related documentation:
+
+* [copyright and terms of use](https://www.unicode.org/copyright.html)
+* [license](https://www.unicode.org/license.html)
+
+
+----------
+
+### What does it do:
+
+This code extracts emojis and their description (name) and subsequent associated skins described as "fully-qualified" from the public file maintained by unicode.org
+
+The extracted material is organized into a javascript object and organizes the icons (and descriptions) among the main descriptive groups.
+
+```javascript
+// v11 example
+let v11 = {
+    // Smileys & People
+    people: [],
+    // Animals & Nature
+    nature: [],
+    // Food & Drink
+    food: [],
+    // Travel & Places
+    travel: [],
+    // Activities
+    activity: [],
+    // Objecties
+    objects: [],
+    // Symbols
+    symbols: [],
+    // Flags
+    flags: []
+}
+
+// v12 example
+let v12 = {
+    // Smileys & Emotion
+    smiles: [],
+    // People & Body
+    people: [],
+    // Animals & Nature
+    nature: [],
+    // Food & Drink
+    food: [],
+    // Travel & Places
+    travel: [],
+    // Activities
+    activity: [],
+    // Objecties
+    objects: [],
+    // Symbols
+    symbols: [],
+    // Flags
+    flags: []
+}
+```
+
+Not all icons have been implemented even in the latest versions of major browsers ... a "generic" list of unsupported icons is included in the code (by description).
+
+
+----------
+
+### Use:
+
+**ES6 module example**:
+
+```javascript
+import EmojiExtractor from 'path/to/EmojiExtractor.mjs'
+
+/**
+ * @param {String}   url      - url for v11 or v12 file target                  [default: v12 url]
+ * @param {Boolean}  minify   - simple remove comments in code and withe spaces [default: false]
+ * @param {Boolean}  onlyicon - return only icons                               [default: false]
+ * @param {Boolean}  tones    - return icons skins                              [default: true]
+ * @param {String}   filemane - optional for save/download data                 [default: use version eg: v12.js]
+ * @param {Array}    ignore   - list of ignore icons, skins                     [default: "generic list"]
+ * @return {Promise}          - return data object or save/download data to file case have filename param
+ */
+EmojiExtractor({
+   url: 'https://unicode.org/Public/emoji/12.0/emoji-test.txt', // v12 - to use v11 change "12.0" to "11.0"
+   minify: Boolean,
+   onlyicon: Boolean,
+   tones: Boolean,
+   filename: String,
+   ignore: Array
+}).then(data => {
+    // do stuff the data ...
+}).catch(console.log)
+```
+
+**In `GlobalScope` example (not ES6 module)**:
+
+Include in your document:
+
+```html
+<script src="path/to/EmojiExtractor.min.js"></script>
+```
+
+----------
+
+Use:
+
+```javascript
+
+let EmojiExtractor = window.EmojiExtractor
+
+EmojiExtractor({/*settings*/}).then(data => {
+    // do stuff the data ...
+}).catch(console.log)
+```
+
+> NOTE: see limitations section in this page case use minify mode
+
+
+----------
+
+### Features:
+
+Library lightway:
+
+* **minified** - weight ?kB
+* **unminified** - weight ?kB
+
+Data result:
+
+* **minified** - only icons, no skins, no comments and with ignorated list: weight +- 14kB
+* **unmified** - icons, descriptions, comments (with ignorated list): weight +- 165kB
+
+
+----------
+
+### Todo:
+
+- [ ] get specif icons by group
+- [ ] get specific loot of icons (by "name/description")
+
+
+----------
+
+### Contributing:
+
+Your contribution to this code will be welcomed, please see the [contribution guide](https://github.com/subversivo58/emoji-extractor/blob/master/CONTRIBUTING.md)
+
+
+----------
+
+### Limitation:
+
+This code use **positive lookbehind** in `RegExp` rule for minify data, this only adopted in NodeJS and this browsers:
+
+* **desktop**: Chrome 62+, Edge 76+, Opera 49+
+* **mobile (Android)**: Native Browser 67+, Chrome 75+, UC Browser 12.12+, Opera Mobile 46+, Samsung Internet 9.2+
+* **nodejs**: v6+ (v6.x.x whith **harmony** flag)
+
+
+See [caniuse.com for support table](https://caniuse.com/#feat=js-regexp-lookbehind)
+
+
+----------
+
+### License:
+
+MIT License
+
+Copyright (c) 2019 Lauro Moraes [[AKA Subversivo58]](https://github.com/subversivo58)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
