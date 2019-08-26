@@ -1,4 +1,4 @@
-# Javascript Emoji Extractor
+# Javascript Emoji Extractor 🤔
 
 This code extract emojis icons and associate data (groups, subgroups, descriptions) from [unicode.org](https://unicode.org/Public/emoji/12.0/emoji-test.txt) public file.
 
