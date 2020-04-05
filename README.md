@@ -142,7 +142,7 @@ Please, see the basic demonstration on [https://jsfiddle.net/subversivo58/](http
 
 ### Todo:
 
-- [ ] implement ES6 module library version
+- [x] implement ES6 module library version
 - [ ] get specif icons by group
 - [ ] get specific loot of icons (by "name/description")
 
